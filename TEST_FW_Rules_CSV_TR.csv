@@ -1,0 +1,220 @@
+Group, Name, Action, Direction, Status, Network Protocol, Transport Protocol, Remote Address, Remote Service, Local Address, Local Service, Application, App Path, Fingerprint, Signer, ExeNote, RuleNote, Last Modified, Last Modifying Username
+"","Block Out IPv6 (41) -STIG H37020","BLOCK",OUT,Enabled,IPv4,IPv6,Any,Any,Any,Any,"","","","","","","2017-09-26","",
+"Default","","JUMP",EITHER,Enabled,,All,Any,Any,Any,Any,"","","","","","","2015-06-08","",
+"Default","D1 Allow All Network Security Scanner IP <>","ALLOW",EITHER,Enabled,IPv4,All,Any,Any,"164.191.96.19",Any,"","","","","","Configure for IP address(es) of approved network scanner(s)","2018-07-26","",
+"Default","D2 Allow Either 802.1X Authentication","ALLOW",EITHER,Enabled,0x888e,All,Any,Any,Any,Any,"","","","","","","2016-04-05","",
+"Default","D3 Allow Either localhost","ALLOW",EITHER,Enabled,IPv4/IPv6,All,"127.0.0.1",Any,"127.0.0.1",Any,"","","","","","","2018-02-05","",
+"Default","D4 Allow Either UDP 123 - Net Time Protocol","ALLOW",EITHER,Enabled,IPv4,UDP,"Trusted","123",Any,"123","","","","","","","2018-07-13","",
+"Default","D5 Allow In TCP 591 - Agent wake-up","ALLOW",IN,Enabled,IPv4,TCP,"Trusted","1024-65535",Any,"591","","","","","","MA: Inbound connection form ePO server and AH.
+SADR: Inbound connection from other agents.","2018-07-13","",
+"Default","D6 Allow In UDP 8082 - Agent broadcast","ALLOW",IN,Enabled,IPv4,UDP,"Trusted","1024-65535",Any,"8082","","","","","","MA: Inbound connection to agents.","2018-07-13","",
+"Default","D7 Allow In UDP 4679 4680 - UPS Broadcast","ALLOW",IN,Enabled,IPv4,UDP,"Trusted","1024-65535",Any,"4679-4680","","","","","","","2018-07-13","",
+"Default","D8 Allow Out UPD 67 bootp","ALLOW",OUT,Enabled,IPv4,UDP,"Trusted","67",Any,"68","","","","","","","2018-07-13","",
+"Default","D9 Allow Out UPD 68 bootp","ALLOW",OUT,Enabled,IPv4,UDP,"Trusted","68",Any,"67","","","","","","","2018-07-13","",
+"Default","D10 Allow Out UDP 53 DNS","ALLOW",OUT,Enabled,IPv4,UDP,"Trusted","53",Any,"1024-65535","","","","","","","2018-07-13","",
+"Default","D11 Allow Out TCP 80 443 591 McScript_InUse","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","80, 443, 591",Any,"1024-65535","McScript_InUse","**\McScript_InUse.exe","None","","C:\Program Files (x86)\McAfee\Common Framework\McScript_InUse.exe","","2018-07-13","",
+"Broadcast","","JUMP",EITHER,Enabled,,All,Any,Any,Any,Any,"","","","","","Research Further.  The need for this traffic on TEST is unknown.  May block, or may allow.  
+
+Some traffic, like OSPF broacasts, seems obvioulsy unneeded by Workstations and servers.  Other items may be needed.  These rules have been created to capture and log the traffic.  Testing and a decision to block/allow specific rules to be made later.","2015-07-06","",
+"Broadcast","B1 Allow In UDP - 9 multicast IPs","ALLOW",IN,Enabled,IPv4,UDP,Any,"","239.255.255.250127.0.0.1224.0.0.252224.0.0.5224.0.0.22224.0.0.13224.0.0.2239.255.255.254224.0.0.1","","","","","","","Testing Summary Rule to consolidate and replace the 9 other 224net and multicast fw rules.","2016-04-05","",
+"Broadcast","B2 Allow In IGMP - 9 multicast IPs","ALLOW",IN,Enabled,IPv4,IGMP,Any,Any,"239.255.255.250127.0.0.1224.0.0.252224.0.0.5224.0.0.22224.0.0.13224.0.0.2239.255.255.254224.0.0.1",Any,"","","","","","Testing Summary Rule to consolidate and replace the 9 other 224net and multicast fw rules.
+
+Testing Block.","2015-09-24","",
+"Broadcast","B3 Allow In PIM - 9 multicast IPs","ALLOW",IN,Enabled,IPv4,PIM,Any,Any,"239.255.255.250127.0.0.1224.0.0.252224.0.0.5224.0.0.22224.0.0.13224.0.0.2239.255.255.254224.0.0.1",Any,"","","","","","Testing Summary Rule to consolidate and replace the 9 other 224net and multicast fw rules.
+
+Test Block","2015-09-24","",
+"Broadcast","B4 Allow In OSPFIGP - 9 multicast IPs","ALLOW",IN,Enabled,IPv4,OSPFIGP,Any,Any,"239.255.255.250127.0.0.1224.0.0.252224.0.0.5224.0.0.22224.0.0.13224.0.0.2239.255.255.254224.0.0.1",Any,"","","","","","Testing Summary Rule to consolidate and replace the 9 other 224net and multicast fw rules.
+
+Test Block","2015-09-24","",
+"Broadcast","B5 Allow Out IGMP - 9 multicast IPs","ALLOW",OUT,Enabled,IPv4,IGMP,"239.255.255.250127.0.0.1224.0.0.252224.0.0.5224.0.0.22224.0.0.13224.0.0.2239.255.255.254224.0.0.1",Any,Any,Any,"","","","","","Testing Summary Rule to consolidate and replace the 9 other 224net and multicast fw rules.","2016-04-05","",
+"Broadcast","B6 Allow Out UDP - 9 multicast IPs","ALLOW",OUT,Enabled,IPv4,UDP,"239.255.255.250127.0.0.1224.0.0.252224.0.0.5224.0.0.22224.0.0.13224.0.0.2239.255.255.254224.0.0.1","",Any,"","","","","","","Testing Summary Rule to consolidate and replace the 9 other 224net and multicast fw rules.","2016-04-05","",
+"Broadcast","B7 Allow In UDP 67 - bootpc broadcast to 255.255.255.255","ALLOW",IN,Enabled,IPv4,UDP,Any,"68","255.255.255.255","67","","","","","","Validated matched live traffic - 7/1/2015 - DC to accept bootpc broadcasts","2016-04-05","",
+"Broadcast","B8 Allow In UDP 68 - bootps broadcast to 255.255.255.255","ALLOW",IN,Enabled,IPv4,UDP,Any,"67","255.255.255.255","68","","","","","","","2016-04-05","",
+"CISCO","","JUMP",EITHER,Enabled,,All,Any,Any,Any,Any,"","","","","","","2015-06-02","",
+"CISCO","ISE1 Allow Either 802.1x Cisco ISE EAPOL protocol","ALLOW",EITHER,Enabled,0x888e,All,Any,Any,Any,Any,"","","","","","","2016-04-05","",
+"CISCO","ISE2 Allow Out TCP 80 8080 8905 NACAgentUI","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","80, 8080, 8905",Any,"1024-65535","NACAgentUI","**\NACAGENTUI.EXE","None","","","Primary Rule.  This rule is specifically filtered by port(s) and Application.  Strict rule for expected traffic.","2018-07-13","",
+"CISCO","ISE2a Allow Out TCP 8095 Cisco ISE TCP Authentication","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","8905",Any,"1024-65535","","","","","","Secondary "cleanup" rule.  Some percentage of the traffic of this port/protocol does NOT invoke the application, thus this rule is required to capture the port requirement.","2018-02-07","",
+"CISCO","ISE2b Allow Out UDP 8095 Cisco ISE UDP Authentication","ALLOW",OUT,Enabled,IPv4,UDP,"Trusted","8905",Any,"1024-65535","","","","","","Secondary "cleanup" rule.  Some percentage of the primary traffic of this port/protocol does NOT invoke the application, thus this rule is required to capture the port requirement.","2018-02-07","",
+"CISCO","ISE3 Allow Out TCP 80 ACISE","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","80",Any,"1024-65535","ACISE","C:\PROGRAM FILES*\CISCO\CISCO ANYCONNECT SECURE MOBILITY CLIENT\ACISE.EXE","None","CN="Cisco Systems, Inc.", OU=Endpoint Security, O="Cisco Systems, Inc.", L=San Jose, S=California, C=US","","SW3P1","2018-07-13","",
+"Ping","","JUMP",EITHER,Enabled,,All,Any,Any,Any,Any,"","","","","","","2009-07-09","",
+"Ping","Block incoming ICMP Timestamp","BLOCK",IN,Enabled,IPv4/IPv6,ICMP,Any,Any,Any,Any,"","","","","","","2018-02-07","",
+"Ping","Block incoming ICMP Addr Mask","BLOCK",IN,Enabled,IPv4/IPv6,ICMP,Any,Any,Any,Any,"","","","","","","2015-06-08","",
+"Ping","Block incoming ICMP Info Req","BLOCK",IN,Enabled,IPv4/IPv6,ICMP,Any,Any,Any,Any,"","","","","","","2015-06-08","",
+"Ping","Block incoming ICMP Router Solicit","BLOCK",IN,Enabled,IPv4/IPv6,ICMP,Any,Any,Any,Any,"","","","","","","2015-06-08","",
+"Ping","Block incoming ICMP Redirect","BLOCK",IN,Enabled,IPv4/IPv6,ICMP,Any,Any,Any,Any,"","","","","","","2015-06-08","",
+"Ping","Allow Either ICMP","ALLOW",EITHER,Enabled,IPv4,ICMP,Any,Any,Any,Any,"","","","","","","2018-02-07","",
+"TEST CAG","","JUMP",EITHER,Disabled,IPv4/IPv6,All,Any,Any,"",Any,"","","","","","The purpose of this rule is to block wrong enclave traffic.  IF your managed systems NICs are configured with "Connection Specific DNS Suffix" THEN you may enter the ALTERNET networks' wildcarded DNS suffix into the Location Tab.  The subordinate block-rule will then block ALL traffic that matches that domain if a system is plugged into the wrong network.   Example:  If this policy is on NIPR, then on this CAG rule you block all SIPR, CMIL, and ICGOV configurations; this way if a NIPR Workstation system is accidentally plugged into the SIPR network it's HBSS FW policy will block most traffic from (and to) the Workstation.","2016-04-15","",
+"TEST CAG","Block Wrong Network Enclave Traffic","BLOCK",EITHER,Enabled,IPv4/IPv6,All,Any,Any,Any,Any,"","","","","","Do not configure network ranges in this rule.  This is a block all rule only.  It will block traffic that matched the LAG Rule. Configure the "wrong network" ranges in LAG group to ensure those networks are not displayed on the HIPS client.","2015-07-07","",
+"TEST Connection Aware Group (CAG) Allow Domain -STIG H37040","","JUMP",EITHER,Enabled,IPv4/IPv6,All,Any,Any,"",Any,"","","","","","The purpose of this group is to check that the system is attached to the correct network before processing the rules contained within this group.  If enabled in the Location Tab, this checks to ensure the "Connection Specific DNS Suffix" configured on each managed system network interface matches the wildcarded domain suffix.  If it doesnt match the entire container will be skipped and drop down to the Deny ALL rule.  ","2018-11-05","",
+"Windows","","JUMP",EITHER,Enabled,,All,Any,Any,Any,Any,"","","","","","","2015-07-20","",
+"Windows","W1 Allow In TCP 8530, 8351 WSUS STIG V-14495","ALLOW",IN,Enabled,IPv4,TCP,"Trusted","1024-65535",Any,"8351, 8530","","","","","","","2018-02-07","",
+"Windows","W2 Allow In TCP 135 Client-Domain Controller","ALLOW",IN,Enabled,IPv4,TCP,"Trusted","1024-65535",Any,"135","","","","","","","2018-02-07","",
+"Windows","W3 Allow In UDP 137 NetBIOS Name Resolution","ALLOW",IN,Enabled,IPv4,UDP,"Trusted","1024-65535",Any,"137","","","","","","","2018-02-07","",
+"Windows","W4 Allow In UDP 138 NetBIOS Datagram Service","ALLOW",IN,Enabled,IPv4,UDP,"Trusted","1024-65535",Any,"138","","","","","","","2018-02-07","",
+"Windows","W5 Allow In UDP 139, 445 NetBIOS Session Services, SMB","ALLOW",IN,Enabled,IPv4,UDP,"Trusted","1024-65535",Any,"139, 445","","","","","","","2018-02-07","",
+"Windows","W6 Allow In TCP 139, 445 NetBIOS Session Service, SMB","ALLOW",IN,Enabled,IPv4,TCP,"Trusted","1024-65535",Any,"139, 445","","","","","","","2018-02-07","",
+"Windows","W7 Allow In UDP 1900 Simple Service Discovery Protocol (SSDP)","ALLOW",IN,Enabled,IPv4,UDP,"239.255.255.250","1024-65535",Any,"1900","","","","","","This rule will NOT work when filtered at the Group level by "Trusted" networks because the network ip is a broadcast and outside the trusted networks range.  Therefore this rule is also covered within the broadcast group.  This rule is left here just to keep mindfulness of the Windows based traffic.","2018-02-07","",
+"Windows","W8 Allow In TCP 3389 RDP","ALLOW",IN,Enabled,IPv4,TCP,"Trusted","1024-65535",Any,"3389","","","","","","","2018-07-13","",
+"Windows","W9 Allow In UDP 3389 RDP","ALLOW",IN,Enabled,IPv4,UDP,"Trusted","1024-65535",Any,"3389","","","","","","","2018-07-13","",
+"Windows","W10 Allow In TCP 49152-65535  with Microsoft signed ","ALLOW",IN,Enabled,IPv4,TCP,"Trusted","1024-65535",Any,"49152-65535","NETSH, spoolsv, SERVICES, TSSDIS, svchost, lsass, SYSTEM, WMIPRVSE, DSREGCMD","C:\WINDOWS\SYSTEM32\NETSH.EXE, C:\Windows\System32\spoolsv.exe, C:\WINDOWS\SYSTEM32\SERVICES.EXE, C:\WINDOWS\SYSTEM32\TSSDIS.EXE, C:\Windows\system32\svchost.exe, C:\Windows\system32\lsass.exe, **\SYSTEM, C:\WINDOWS\SYSTEM32\WBEM\WMIPRVSE.EXE, C:\WINDOWS\SYSTEM32\DSREGCMD.EXE","None, None, None, None, None, None, None, None, None","CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US, , CN=Microsoft Windows Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US, CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US, , , , CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US, CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",", C:\Windows\System32\spoolsv.exe, , , C:\Windows\system32\svchost.exe, C:\Windows\system32\lsass.exe, SYSTEM, , ","SW3P1","2018-07-13","",
+"Windows","W11 Allow Out TCP 135 Client-Domain Controller ","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","135",Any,"1024-65535","","","","","","","2018-02-07","",
+"Windows","W12 Allow Out UDP 135 Client-Domain Controller ","ALLOW",OUT,Enabled,IPv4,UDP,"Trusted","135",Any,"1024-65535","","","","","","","2018-02-07","",
+"Windows","W13 Allow Out UDP 137 NetBIOS Name Resolution","ALLOW",OUT,Enabled,IPv4,UDP,"Trusted","137",Any,"1024-65535","","","","","","","2018-02-07","",
+"Windows","W14 Allow Out UDP 138 NetBIOS Datagram Service","ALLOW",OUT,Enabled,IPv4,UDP,"Trusted","138",Any,"1024-65535","","","","","","","2018-02-07","",
+"Windows","W15 Allow Out UDP 139 445 NetBIOS Session Service, SMB","ALLOW",OUT,Enabled,IPv4,UDP,"Trusted","139, 445",Any,"1024-65535","","","","","","","2018-02-07","",
+"Windows","W16 Allow Out TCP 139 445 NetBIOS Session Service, SMB","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","139, 445",Any,"1024-65535","","","","","","","2018-02-07","",
+"Windows","W17 Allow Out TCP 389 636 LDAP(S)","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","389, 636",Any,"1024-65535","","","","","","","2018-02-07","",
+"Windows","W18 Allow Out TCP 8530 8531 WSUS","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","8530-8531",Any,"1024-65535","","","","","","This rule is to allow/log WSUS activity.","2018-02-07","",
+"Windows","W19 Allow Out UDP 389 LDAP","ALLOW",OUT,Enabled,IPv4,UDP,"Trusted","389",Any,"1024-65535","","","","","","","2018-02-07","",
+"Windows","W20 Allow Out TCP 53 DNS","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","53",Any,"1024-65535","","","","","","TechNet Note; Applies To: Windows Server 2008
+
+During DNS resolution, DNS messages are sent from DNS clients to DNS servers or between DNS servers. Messages are sent over UDP and DNS servers bind to UDP port 53. When the message length exceeds the default message size for a User Datagram Protocol (UDP) datagram (512 octets), the first response to the message is sent with as much data as the UDP datagram will allow, and then the DNS server sets a flag indicating a truncated response. The message sender can then choose to reissue the request to the DNS server using TCP (over TCP port 53). The benefit of this approach is that it takes advantage of the performance of UDP but also has a backup failover solution for longer queries.","2018-02-07","",
+"Windows","W21 Allow Out TCP 1028 10003 10004 49152-65535  with Microsoft signed ","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","1028, 10003-10004, 49152-65535",Any,"1024-65535","NETSH, spoolsv, WMIPRVSE, DSREGCMD, SERVICES, TSSDIS, MMC, lsass, svchost, TLSBLN, SYSTEM, CERTSRV","C:\WINDOWS\SYSTEM32\NETSH.EXE, C:\Windows\System32\spoolsv.exe, C:\WINDOWS\SYSTEM32\WBEM\WMIPRVSE.EXE, C:\WINDOWS\SYSTEM32\DSREGCMD.EXE, C:\WINDOWS\SYSTEM32\SERVICES.EXE, C:\WINDOWS\SYSTEM32\TSSDIS.EXE, C:\WINDOWS\SYSTEM32\MMC.EXE, C:\Windows\system32\lsass.exe, C:\Windows\system32\svchost.exe, C:\WINDOWS\SYSTEM32\TLSBLN.EXE, **\SYSTEM, C:\WINDOWS\SYSTEM32\CERTSRV.EXE","None, None, None, None, None, None, None, None, None, None, None, None","CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US, , CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US, CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US, CN=Microsoft Windows Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US, CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US, CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US, , , CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US, , CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",", C:\Windows\System32\spoolsv.exe, , , , , , C:\Windows\system32\lsass.exe, C:\Windows\system32\svchost.exe, , SYSTEM, ","SW3P1","2018-07-13","",
+"Windows","W22 Allow Out UDP 1900 Simple Service Discovery Protocol (SSDP)","ALLOW",OUT,Enabled,IPv4,UDP,"Trusted","1900",Any,"1024-65535","","","","","","","2018-07-13","",
+"Windows","W23 Allow Out UDP 88 464 Kerberos","ALLOW",OUT,Enabled,IPv4,UDP,"Trusted","88, 464",Any,"1024-65535","","","","","","","2018-07-13","",
+"Windows","W24 Allow Out TCP 88 464 Kerberos","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","88, 464",Any,"1024-65535","","","","","","","2018-07-13","",
+"Windows","W25 Allow Out UDP 138  SYSTEM","ALLOW",OUT,Enabled,IPv4,UDP,"Trusted","138",Any,"138","SYSTEM","SYSTEM","None","","","SW3P1","2018-07-13","",
+"Windows","W26 Allow Out UDP 137  SYSTEM","ALLOW",OUT,Enabled,IPv4,UDP,"Trusted","137",Any,"137","SYSTEM","SYSTEM","None","","","SW3P1","2018-07-13","",
+"Test Apps","","JUMP",EITHER,Enabled,,All,Any,Any,Any,Any,"","","","","","","2015-07-06","",
+"Test Apps","C-FileZilla SW3 01 Allow OUT TCP 21 22","ALLOW",EITHER,Enabled,IPv4,TCP,"Trusted","21-22, 49152-65535",Any,"49152-65535","FILEZILLA","C:\PROGRAM FILES\FILEZILLA FTP CLIENT\FILEZILLA.EXE","None","","CN=Tim Kosse, O=Tim Kosse, L=Koln, S=Nordrhein-Westfalen, C=DE","","2018-09-27","",
+"Test Apps","C-NetIQ1 Allow In UDP 514 with App (NqSmSvc Module (NqSmSvc))","ALLOW",IN,Enabled,IPv4,UDP,"Trusted","1024-65535",Any,"514","NqSmSvc","**\NqSmSvc.exe","None","","C:\Program Files (x86)\NetIQ Security Manager\ONEPOINT\NqSmSvc.exe","","2018-07-11","",
+"Test Apps","C-NetIQ1a Allow In UDP 514","ALLOW",IN,Enabled,IPv4,UDP,"Trusted","1024-65535",Any,"514","","","","","","Secondary Rule.  This rule is a "cleanup rule" for the primary rule.  
+
+It was created because traffic was found in the logs which does NOT show the application.  
+
+Since the port/protocol is the primary requirement this secondary (more permissive) rule is required, however the more strict primary rule is retained to capturue/log the normally expected traffic.","2018-02-07","",
+"Test Apps","CNIQ Allow Out TCP 8270 49667 49669 NqSmSvc","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","8270, 49667, 49669",Any,"1024-65535","NqSmSvc","**\NqSmSvc.exe","None","","C:\Program Files (x86)\NetIQ Security Manager\ONEPOINT\NqSmSvc.exe","Primary Rule.  This strict rule is for the specific port/protocol AND application required for TEST.
+SW3P1 - added 49667 49669.","2018-07-12","",
+"Test Apps","CNIQa Allow Out TCP 8270","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","8270",Any,"1024-65535","","","","","","Secondary Rule.  This rule is a "cleanup rule" for the primary rule.  
+
+It was created because some traffic was found in the logs which does NOT show the application, but is required.
+
+Since the port/protocol is the primary requirement this secondary (more permissive) rule is required, however the more strict primary rule is retained to capturue/log the normally expected traffic.","2018-02-07","",
+"Test Apps","C-NetIQ4 Allow In TCP 1636 with App (NqSmLM.exe)","ALLOW",IN,Enabled,IPv4,TCP,"Trusted","1024-65535",Any,"1636","NqSmLM.exe","**\NqSmLM.exe","None","","F:\NetIQ Security Manager\ONEPOINT\NqSmLM.exe","Found on SIEM","2018-02-07","",
+"Test Apps","C-Nu1 Allow In UDP 161 NDAgnt","ALLOW",IN,Enabled,IPv4,UDP,"Trusted","1024-65535",Any,"161","NDAgnt","**\NDAgnt.exe","None","","C:\Windows\system32\NDAgnt.exe","Primary Rule.  This strict rule is for the specific port/protocol AND application required for TEST.","2018-07-12","",
+"Test Apps","C-Nu1a Allow In UDP 161 SNMP","ALLOW",IN,Enabled,IPv4,UDP,"Trusted","1024-65535",Any,"161","","","","","","Secondary Rule.  This rule is a "cleanup rule" for the primary rule.  
+
+It was created because some traffic was found in the logs which does NOT show the application, but is required.
+
+Since the port/protocol is the primary requirement this secondary (more permissive) rule is required, however the more strict primary rule is retained to capturue/log the normally expected traffic.","2018-02-07","",
+"Test Apps","C-McAfee1a Allow Out UDP 137 with App (McAfee Rogue System Sensor (RSSensor))","ALLOW",OUT,Enabled,IPv4,TCP,Any,"137","Trusted","1024-65535"," McAfee Rogue System Sensor (RSSensor)","**\RSSensor.exe","None","","C:\Program Files (x86)\McAfee\RSD Sensor\RSSensor.exe","","2018-02-08","",
+"Test Apps","C-RDP Allow Out TCP 3389 with mstsc","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","3389",Any,"1024-65535","MSTSC.EXE","**\MSTSC.EXE","None","","","","2018-07-12","",
+"Test Apps","C-IE Allow Out TCP 80 443 8009 8080 8081 iexplore","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","80, 443, 8009, 8080-8081",Any,"1024-65535","iexplore","**\iexplore.exe","None","CN=MICROSOFT CORPORATION, OU=MOPR, O=MICROSOFT CORPORATION, L=REDMOND, S=WASHINGTON, C=US","C:\Program Files (x86)\Internet Explorer\iexplore.exe","","2018-07-12","",
+"Test Apps","C-MS EDGE Allow Out TCP 80 443 8009 8080 8081 MICROSOFTEDGE ","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","80, 443, 8009, 8080-8081",Any,"1024-65535","MICROSOFTEDGE, MICROSOFTEDGECP","C:\WINDOWS\SYSTEMAPPS\MICROSOFT.MICROSOFTEDGE_*\MICROSOFTEDGE.EXE, C:\WINDOWS\SYSTEMAPPS\MICROSOFT.MICROSOFTEDGE_*\MICROSOFTEDGECP.EXE","None, None","CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US, CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",", ","SW3P1","2018-07-12","",
+"Test Apps","C-BU10 Allow Out TCP 7938 9155 9359 9460 with  App (nsrexecd)","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","7938, 9155, 9359, 9460",Any,"1024-65535","nsrexecd","**\nsrexecd.exe","None","","F:\Program Files\Legato\nsr\bin\nsrexecd.exe","","2018-02-08","",
+"Test Apps","C-BU11 Allow Out 7937 7938 7959 8322 8364 9460 9565 9933 with App (gstd)","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","7937-7938, 7959, 8322, 8364, 8821, 9565",Any,"1024-65535","gstd","**\gstd.exe","None","","F:\Program Files (x86)\Legato\Management\GST\bin\gstd.exe","Note:  Also found on MTS, may need to have this rule in member servers.  Do more research.","2018-02-08","",
+"Test Apps","C-VEE Allow IN 1900 UDP svchost.exe, VeeamAgent.exe","ALLOW",IN,Enabled,IPv4,UDP,"Trusted","1024-65535",Any,"1539, 1900","svchost.exe, VeeamAgent.exe","C:\windows\system32\svchost.exe, C:\Program Files (x86)\Veeam\Backup Transport\x86\VeeamAgent.exe","None, None",", ",", ","S3-41
+Created based on SW3 RC1.3 on log entry from EM02:
+Time:  4/16/2018 11:21:37 PM
+Event:  Traffic
+IP Address/User:  205.16.216.29
+Description:  Host Process for Windows Services (svchost)
+Path:  C:\windows\system32\svchost.exe
+Message:  Allowed Incoming UDP -  Source 205.16.216.29 :  (1900)  Destination 205.16.216.13 :  (55697)
+Matched Rule:  Allow All IN
+
+Added port 1539 to rule based on SW3 RC1.3 log entry on IAEXET:
+Time:  4/17/2018 8:49:45 PM
+Event:  Traffic
+IP Address/User:  205.16.216.19
+Description:  Host Process for Windows Services (svchost)
+Path:  C:\windows\system32\svchost.exe
+Message:  Allowed Incoming TCP -  Source 205.16.216.19 :  (52550)  Destination 205.16.216.37 :  (1539)
+Matched Rule:  Allow All IN
+EM20180417
+
+Added VeeamAgent.exe to rule based on log entry from BU01:
+Time:  4/24/2018 7:35:06 PM
+Event:  Traffic
+IP Address/User:  205.16.216.29
+Description:  VeeamAgent (VeeamAgent)
+Path:  C:\Program Files (x86)\Veeam\Backup Transport\x86\VeeamAgent.exe
+Message:  Allowed Incoming UDP -  Source 205.16.216.29 :  (1900)  Destination 205.16.216.16 :  (57710)
+Matched Rule:  Allow All IN
+EM20180424","2018-05-16","",
+"Test Apps","C-VEE Allow TCP In 6167 VEEAMLOGSHIPPER","ALLOW",IN,Enabled,IPv4,TCP,"Trusted","1024-65535",Any,"6167","VEEAMLOGSHIPPER","C:\WINDOWS\VEEAMLOGSHIPPER\VEEAMLOGSHIPPER.EXE","None","CN=Veeam Software AG, O=Veeam Software AG, L=Baar, S=Zug, C=CH","","SW3P1","2018-07-11","",
+"Test Apps","C-VEE Allow TCP In 35101 49152 - 65535 VEEAMGUESTHELPER","ALLOW",IN,Enabled,IPv4,TCP,"Trusted","1024-65535",Any,"35101, 49152-65535","VEEAMGUESTHELPER","C:\WINDOWS\VEEAMVSSSUPPORT\VEEAMGUESTHELPER.EXE","None","CN=Veeam Software AG, O=Veeam Software AG, L=Baar, S=Zug, C=CH","","SW3P1","2018-07-12","",
+"Test Apps","C-VEE Allow TCP In 2500-2510 VEEAMAGENT","ALLOW",IN,Enabled,IPv4,TCP,"Trusted","1024-65535",Any,"2500-2510","VEEAMAGENT","C:\WINDOWS\VEEAMLOGSHIPPER\X86\VEEAMAGENT.EXE","None","CN=Veeam Software AG, O=Veeam Software AG, L=Baar, S=Zug, C=CH","","SW3P1","2018-07-13","",
+"Test Apps","C-VEE Allow TCP Out 2505 2507 2508 VEEAMAGENT","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","443, 902, 2500-2510",Any,"1024-65535","VEEAMAGENT","C:\WINDOWS\VEEAMLOGSHIPPER\X86\VEEAMAGENT.EXE","None","CN=Veeam Software AG, O=Veeam Software AG, L=Baar, S=Zug, C=CH","","SW3P1","2018-07-13","",
+"Test Apps","C-VEE Allow TCP Out 443 VEEAMVE","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","443",Any,"1024-65535","VEEAMVE","F:\PROGRAM FILES\VEEAM\MANAGER\MANAGER\VEEAMVE.EXE","None","CN=Veeam Software AG, O=Veeam Software AG, L=Baar, S=Zug, C=CH","","SW3P1","2018-07-11","",
+"Test Apps","C-VEE Allow TCP Out 1433 VEEAMLOGSHIPPER","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","1433",Any,"1024-65535","VEEAMLOGSHIPPER","C:\WINDOWS\VEEAMLOGSHIPPER\VEEAMLOGSHIPPER.EXE","None","CN=Veeam Software AG, O=Veeam Software AG, L=Baar, S=Zug, C=CH","","SW3P1","2018-07-11","",
+"Test Apps","C-VEE Allow Out TCP 1433 VEEAMGUESTHELPER","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","1433",Any,"1024-65535","VEEAMGUESTHELPER","C:\WINDOWS\VEEAMVSSSUPPORT\VEEAMGUESTHELPER.EXE","None","CN=Veeam Software AG, O=Veeam Software AG, L=Baar, S=Zug, C=CH","","SW3P1","2018-07-13","",
+"Test Apps","C-VEE Allow TCP Out 443, 8084 VEEAMCOLLECTOR","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","443, 8084",Any,"1024-65535","VEEAMCOLLECTOR","F:\PROGRAM FILES\VEEAM\MANAGER\COLLECTOR\VEEAMCOLLECTOR.EXE","None","CN=Veeam Software AG, O=Veeam Software AG, L=Baar, S=Zug, C=CH","","SW3P1","2018-07-11","",
+"Test Apps","C-VEE Allow In TCP 6160 VEEAMDEPLOYMENTSVC","ALLOW",IN,Enabled,IPv4,TCP,"Trusted","1024-65535",Any,"6160","VEEAMDEPLOYMENTSVC","C:\WINDOWS\VEEAM\BACKUP AND REPLICATION\VEEAMDEPLOYMENTSVC.EXE","None","CN=Veeam Software AG, O=Veeam Software AG, L=Baar, S=Zug, C=CH","","SW3P1","2018-07-13","",
+"Test Apps","C-VEE Allow In TCP 6162 VEEAMTRANSPORTSVC","ALLOW",IN,Enabled,IPv4,TCP,"Trusted","1024-65535",Any,"6162","VEEAMTRANSPORTSVC","C:\PROGRAM FILES (X86)\VEEAM\BACKUP TRANSPORT\VEEAMTRANSPORTSVC.EXE","None","CN=Veeam Software AG, O=Veeam Software AG, L=Baar, S=Zug, C=CH","","SW3P1","2018-07-13","",
+"Test Apps","C-VEE Allow In TCP 2500-2508 6190 VEEAM.GUEST.INTERACTION.PROXY","ALLOW",IN,Enabled,IPv4,TCP,"Trusted","1024-65535",Any,"2500-2508, 6190","VEEAM.GUEST.INTERACTION.PROXY","C:\PROGRAM FILES*\VEEAM\BACKUP TRANSPORT\GUESTINTERACTION\VEEAM.GUEST.INTERACTION.PROXY.EXE","None","CN=Veeam Software AG, O=Veeam Software AG, L=Baar, S=Zug, C=CH","","SW3P1","2018-07-13","",
+"Test Apps","C-VEE Allow Out TCP 2500 6167 VEEAM.GUEST.INTERACTION.PROXY","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","2500, 6167",Any,"1024-65535","VEEAM.GUEST.INTERACTION.PROXY","C:\PROGRAM FILES*\VEEAM\BACKUP TRANSPORT\GUESTINTERACTION\VEEAM.GUEST.INTERACTION.PROXY.EXE","None","CN=Veeam Software AG, O=Veeam Software AG, L=Baar, S=Zug, C=CH","","SW3P1","2018-07-13","",
+"Test Apps","C-VEE Allow Out TCP 443 1599 6167 7074 35101 49152-65535 VEEAMGUESTHELPERCTRL","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","443, 1599, 6167, 7074, 35101, 49152-65535",Any,"1024-65535","VEEAMGUESTHELPERCTRL","C:\PROGRAM FILES*\VEEAM\BACKUP TRANSPORT\GUESTINTERACTION\VSS\VEEAMGUESTHELPERCTRL.EXE","None","CN=Veeam Software AG, O=Veeam Software AG, L=Baar, S=Zug, C=CH","","SW3P1","2018-07-13","",
+"Test Apps","C-SC Allow In TCP 5723 HEALTHSERVICE","ALLOW",IN,Enabled,IPv4,TCP,"Trusted","1024-65535",Any,"5723","HEALTHSERVICE.EXE","F:\PROGRAM FILES\MICROSOFT SYSTEM CENTER\OPERATIONS MANAGER\SERVER\HEALTHSERVICE.EXE","None","","","SW3 RC1.1","2018-07-10","",
+"Test Apps","C-SC Allow In TCP 5724 MICROSOFT.MOM.SDK.SERVICEHOST.EXE","ALLOW",IN,Enabled,IPv4,TCP,"Trusted","1024-65535",Any,"5724","MICROSOFT.MOM.SDK.SERVICEHOST.EXE","F:\PROGRAM FILES\MICROSOFT SYSTEM CENTER\OPERATIONS MANAGER\SERVER\MICROSOFT.MOM.SDK.SERVICEHOST.EXE","None","","","SW3 RC1.1","2018-07-13","",
+"Test Apps","C-SC Allow Out TCP 5723 5724 49669 HEALTHSERVICE.EXE","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","5723-5724, 49669",Any,"1024-65535","HEALTHSERVICE","C:\PROGRAM FILES\MICROSOFT MONITORING AGENT\AGENT\HEALTHSERVICE.EXE","None","CN=Microsoft Corporation, OU=MOPR, O=Microsoft Corporation, L=Redmond, S=Washington, C=US","fingerprint: 3D5EB82ABE9F66989EE2E6D5D47DB164","SW3 P1","2018-07-13","",
+"Test Apps","C-SC Allow Out TCP 80 443 1270 5724 5985 MONITORINGHOST.EXE","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","80, 443, 1270, 5724, 5985",Any,"1024-65535","MONITORINGHOST, MONITORINGHOST","F:\PROGRAM FILES\MICROSOFT SYSTEM CENTER\OPERATIONS MANAGER\SERVER\MONITORINGHOST.EXE, C:\PROGRAM FILES\MICROSOFT MONITORING AGENT\AGENT\MONITORINGHOST.EXE","None, None","CN=Microsoft Corporation, OU=MOPR, O=Microsoft Corporation, L=Redmond, S=Washington, C=US, CN=Microsoft Corporation, OU=MOPR, O=Microsoft Corporation, L=Redmond, S=Washington, C=US","Fingerprint: 2B552CD81AB7584A89B0FC0371A7D3BB, ","SW3 P1","2018-07-13","",
+"Test Apps","C-SC Allow Out 80 3268 10123 CCMEXEC","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","80, 3268, 10123",Any,"1024-65535","CCMEXEC","C:\WINDOWS\CCM\CCMEXEC.EXE","None","","","SW3 RC1.1
+Change and Configuration Management agent","2018-07-12","",
+"Test Apps","C-SC Allow Out TCP 80 10123 49152-65535 SMSEXEC CMRCSERVICE CCMEVAL","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","80, 443, 49152-65535",Any,"1024-65535","CMRCSERVICE, SMSEXEC.EXE, CCMEVAL.EXE","C:\WINDOWS\CCM\REMCTRL\CMRCSERVICE.EXE, F:\PROGRAM FILES\MICROSOFT CONFIGURATION MANAGER\BIN\X64\SMSEXEC.EXE, C:\WINDOWS\CCM\CCMEVAL.EXE","None, None, None","CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US, , CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",", , ","SW3 RC1.1
+Change and Configuration Management agent","2018-07-11","",
+"Test Apps","C-SC Allow Out TCP 443 5724 Multi Apps","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","443, 5724",Any,"1024-65535","MICROSOFT.ENTERPRISEMANAGEMENT.SERVICEMANAGER.UI.CONSOLE, MICROSOFT.ENTERPRISEMANAGEMENT.MONITORING.CONSOLE","F:\PROGRAM FILES\MICROSOFT SYSTEM CENTER\SERVICE MANAGER\MICROSOFT.ENTERPRISEMANAGEMENT.SERVICEMANAGER.UI.CONSOLE.EXE, F:\PROGRAM FILES\MICROSOFT SYSTEM CENTER\OPERATIONS MANAGER\CONSOLE\MICROSOFT.ENTERPRISEMANAGEMENT.MONITORING.CONSOLE.EXE","None, None","CN=Microsoft Corporation, OU=MOPR, O=Microsoft Corporation, L=Redmond, S=Washington, C=US, CN=Microsoft Corporation, OU=AOC, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",", ","SW3P1","2018-07-13","",
+"Test Apps","C-SC Allow Out TCP 443 49666 MICROSOFT.CONFIGURATIONMANAGEMENT","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","443, 49666",Any,"1024-65535","MICROSOFT.CONFIGURATIONMANAGEMENT","F:\PROGRAM FILES\CONFIGMGR\BIN\MICROSOFT.CONFIGURATIONMANAGEMENT.EXE","None","CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US","","SW3P1","2018-07-13","",
+"Test Apps","C-SC Allow Out TCP 1433 49669 MICROSOFT.MOM.SDK.SERVICEHOST","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","1433, 49669",Any,"1024-65535","MICROSOFT.MOM.SDK.SERVICEHOST","F:\PROGRAM FILES\MICROSOFT SYSTEM CENTER\SERVICE MANAGER\MICROSOFT.MOM.SDK.SERVICEHOST.EXE","None","CN=Microsoft Corporation, OU=MOPR, O=Microsoft Corporation, L=Redmond, S=Washington, C=US","","SW3P1","2018-07-13","",
+"Test Apps","C-TUMBLEWEED Allow Out TCP 80 DVSERVICE","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","80",Any,"1024-65535","DVSERVICE","C:\PROGRAM FILES\TUMBLEWEED\DESKTOP VALIDATOR\DVSERVICE.EXE","None","","","SW3P1","2018-07-13","",
+"Workstation","","JUMP",EITHER,Enabled,,All,Any,Any,Any,Any,"","","","","","","2015-06-01","",
+"Workstation","WKSTN1 Allow Out UDP 53","ALLOW",OUT,Enabled,IPv4,UDP,"Trusted","53",Any,"1024-65535","","","","","","","2018-02-13","",
+"Workstation","WKSTN2 Allow Out TCP 80 443 8080 8009 firefox","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","80, 443, 8009, 8080",Any,"1024-65535","firefox","**\FIREFOX.EXE","None","","C:\PROGRAM FILES (X86)\MOZILLA FIREFOX\FIREFOX.EXE","","2018-07-12","",
+"Workstation","WKSTN3 Allow Out TCP 80 443 8080 8009","ALLOW",OUT,Enabled,IPv4,TCP,Any,"80, 443, 8009, 8080",Any,"1024-65535","","","","","","","2018-07-12","",
+"Workstation","WKSTN Allow Out TCP 1688 SPPEXTCOMOBJ","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","1688",Any,"1024-65535","SPPEXTCOMOBJ","C:\WINDOWS\SYSTEM32\SPPEXTCOMOBJ.EXE","None","CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US","","SW3P1","2018-07-12","",
+"Workstation","WKSTN Allow Out TCP 49669 49670 EACOMMUNICATORSRV","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","1002, 49660-49670",Any,"1024-65535","EACOMMUNICATORSRV","C:\PROGRAM FILES\SYMANTEC\ENDPOINT ENCRYPTION CLIENTS\MANAGEMENT AGENT\EACOMMUNICATORSRV.EXE","None","CN=Symantec Corporation, OU=DATA LOSS PREVENTION, O=Symantec Corporation, L=San Francisco, S=California, C=US","","SW3P1
+20180807-ports 1002 and 49667 - AM","2018-08-07","",
+"Workstation","WKSTN Allow Out TCP 8080 SEARCHUI","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","8080",Any,"1024-65535","SEARCHUI","C:\WINDOWS\SYSTEMAPPS\MICROSOFT.WINDOWS.CORTANA_*\SEARCHUI.EXE","None","CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US","","SW3P1","2018-07-12","",
+"TEST HOSTS","","JUMP",EITHER,Enabled,,All,Any,Any,Any,Any,"","","","","","","2016-03-16","",
+"TEST","","JUMP",EITHER,Enabled,,All,Any,Any,Any,Any,"","","","","","","2018-11-05","",
+"TEST","TEST Allow OUT TCP ACISE","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","8905",Any,"49125-65535","ACISE","C:\PROGRAM FILES (X86)\CISCO\CISCO ANYCONNECT SECURE MOBILITY CLIENT\ACISE.EXE","None","CN="Cisco Systems, Inc.", OU=Endpoint Security, O="Cisco Systems, Inc.", L=San Jose, S=California, C=US","D270317D84A25BCC5CAD66CE873620B1","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow OUT TCP CW","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","1521",Any,"49125-65535","CW","F:\PROGRAM FILES (X86)\CH2CW\BIN\CW.EXE","None","","C0E57291023CEDFEA4430411A9BFFA92","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow OUT TCP SAMSMM","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","1521",Any,"49125-65535","SAMSMM","F:\PROGRAM FILES (X86)\MMM\SAMSMM\BIN\SAMSMM.EXE","None","","CA3F8624815B8CB6A47F851781F7689E","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow IN UDP NetBIOS SYSTEM","ALLOW",IN,Enabled,IPv4,UDP,"Trusted","138",Any,"138","SYSTEM","SYSTEM","None","","","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow OUT TCP SAMSRH","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","1521",Any,"49125-65535","SAMSRH","F:\PROGRAM FILES (X86)\MMM\SAMSRH\BIN\SAMSRH.EXE","None","","0C9FE30307F0F0ED5550C9ACA6B73E87","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow OUT TCP WEBIRICHCLIENT","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","1521, 6400, 49125-65535",Any,"49125-65535","WEBIRICHCLIENT","F:\PROGRAM FILES (X86)\TEST REPORTING\BO4\SAP BUSINESSOBJECTS ENTERPRISE XI 4.0\WIN32_X86\WEBIRICHCLIENT.EXE","None","CN=SAP AG, OU=Digital ID Class 3 - Microsoft Software Validation v2, OU=SAP Business Objects Production CSA2013, O=SAP AG, L=Walldorf, S=Baden-Wuerttemberg, C=DE","3709881A42D3226B1B42B92F3496EA79
+
+","Dynamically Created Via Adaptive Mode
+
+Added port 1521 based on logged block:
+Time:  11/7/2018 12:05:54 AM
+Event:  Traffic
+IP Address/User:  164.191.101.9
+Description:  WebIRichClient
+Path:  F:\Program Files (x86)\TEST Reporting\BO4\SAP BusinessObjects Enterprise XI 4.0\win32_x86\WebIRichClient.exe
+Message:  Blocked Outgoing TCP -  Source 164.191.98.13 :  (60827)  Destination 164.191.101.9 :  (1521)
+Matched Rule:  Block All Traffic","2018-11-06","",
+"TEST","TEST Allow IN TCP WEBIRICHCLIENT","ALLOW",IN,Enabled,IPv4,TCP,"Trusted","6400, 49125-65535",Any,"49125-65535","WEBIRICHCLIENT","F:\PROGRAM FILES (X86)\TEST REPORTING\BO4\SAP BUSINESSOBJECTS ENTERPRISE XI 4.0\WIN32_X86\WEBIRICHCLIENT.EXE","None","CN=SAP AG, OU=Digital ID Class 3 - Microsoft Software Validation v2, OU=SAP Business Objects Production CSA2013, O=SAP AG, L=Walldorf, S=Baden-Wuerttemberg, C=DE","3709881A42D3226B1B42B92F3496EA79
+
+","Time:  11/6/2018 11:22:48 PM
+Event:  Traffic
+IP Address/User:  164.191.98.8
+Description:  WebIRichClient
+Path:  F:\Program Files (x86)\TEST Reporting\BO4\SAP BusinessObjects Enterprise XI 4.0\win32_x86\WebIRichClient.exe
+Message:  Blocked Incoming TCP -  Source 164.191.98.8 :  (63615)  Destination 164.191.98.8 :  (63606)
+Matched Rule:  Block All Traffic","2018-11-06","",
+"TEST","TEST Allow OUT TCP SAMSEH","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","1521",Any,"49125-65535","SAMSEH","F:\PROGRAM FILES (X86)\MMM\SAMSEH\BIN\SAMSEH.EXE","None","","6F6DE19CE150C33A4899CA667849AD88","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow OUT TCP THEATERSECURITYADMIN","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","1521",Any,"49125-65535","THEATERSECURITYADMIN","F:\PROGRAM FILES (X86)\CH2CW\BIN\THEATERSECURITYADMIN.EXE","None","","AE47C11B5C539F18192DC5A8E3DDA067","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow IN UDP NetBIOS SYSTEM","ALLOW",IN,Enabled,IPv4,UDP,"Trusted","137",Any,"137","SYSTEM","SYSTEM","None","","","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow OUT TCP SAMSHS","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","1521",Any,"49125-65535","SAMSHS","F:\PROGRAM FILES (X86)\MMM\SAMSHS\BIN\SAMSHS.EXE","None","","2E05C6674F0E9B332658831300E6AFCA","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow OUT TCP SAMSSM","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","1521",Any,"49125-65535","SAMSSM","F:\PROGRAM FILES (X86)\MMM\SAMSSM\BIN\SAMSSM.EXE","None","","17F189A99BE38AF6FD212DEBF6A9A639","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow OUT TCP DVSERVICE","ALLOW",OUT,Enabled,IPv4,TCP,Any,"80",Any,"1024-65535","DVSERVICE","C:\PROGRAM FILES\TUMBLEWEED\DESKTOP VALIDATOR\DVSERVICE.EXE","None","","853FEF18D75296C683358CD474A7BB0B","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow OUT UDP MDNSRESPONDER","ALLOW",OUT,Enabled,IPv4,UDP,"Trusted","5353",Any,"1024-65535","MDNSRESPONDER","C:\PROGRAM FILES (X86)\BONJOUR\MDNSRESPONDER.EXE","None","CN=Apple Inc., OU=Digital ID Class 3 - Microsoft Software Validation v2, O=Apple Inc., L=Cupertino, S=California, C=US","5AB58C337AC65837FE404462AD6265AB","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow OUT TCP CCMEXEC","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","80, 3268",Any,"49125-65535","CCMEXEC","C:\WINDOWS\CCM\CCMEXEC.EXE","None","CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US","0578396384A4BBE7337EA8A3372AE5E5","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow OUT TCP EACOMMUNICATORSRV","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","135, 1002, 49125-65535",Any,"49125-65535","EACOMMUNICATORSRV","C:\PROGRAM FILES\SYMANTEC\ENDPOINT ENCRYPTION CLIENTS\MANAGEMENT AGENT\EACOMMUNICATORSRV.EXE","None","CN=Symantec Corporation, OU=DATA LOSS PREVENTION, O=Symantec Corporation, L=Mountain View, S=California, C=US","D2E16C2C296D003C244F6AFD736F896D","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow OUT UDP MSTSC","ALLOW",OUT,Enabled,IPv4,UDP,"Trusted","3389",Any,"49125-65535","MSTSC","C:\WINDOWS\SYSTEM32\MSTSC.EXE","None","CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US","8F50A925596FE12E22ADF123A6DD547C","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow OUT TCP DSREGCMD","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","135, 389, 49125-65535",Any,"49125-65535","DSREGCMD","C:\WINDOWS\SYSTEM32\DSREGCMD.EXE","None","CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US","1E5EABEC8D47B8D80656817A6176146B","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow IN TCP SVCHOST","ALLOW",IN,Enabled,IPv4,UDP,"Trusted","1024-65535",Any,"5353","SVCHOST","C:\WINDOWS\SYSTEM32\SVCHOST.EXE","None","CN=Microsoft Windows Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US","440684C4F823AAE2CC587363F9C477A6","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow OUT TCP SVCHOST","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","53, 80, 135, 389, 443, 5985, 49125-65535",Any,"1024-65535","SVCHOST","C:\WINDOWS\SYSTEM32\SVCHOST.EXE","None","CN=Microsoft Windows Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US","440684C4F823AAE2CC587363F9C477A6","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow OUT UDP LSASS","ALLOW",OUT,Enabled,IPv4,UDP,"Trusted","389",Any,"1024-65535","LSASS","C:\WINDOWS\SYSTEM32\LSASS.EXE","None","CN=Microsoft Windows Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US","0F9760B796DEDE249193B1F7844104B1","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow OUT TCP LSASS","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","88, 135, 389, 49125-65535",Any,"1024-65535","LSASS","C:\WINDOWS\SYSTEM32\LSASS.EXE","None","CN=Microsoft Windows Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US","0F9760B796DEDE249193B1F7844104B1","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow OUT UDP SVCHOST","ALLOW",OUT,Enabled,IPv4,UDP,"Trusted","123",Any,"123","SVCHOST","C:\WINDOWS\SYSTEM32\SVCHOST.EXE","None","CN=Microsoft Windows Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US","440684C4F823AAE2CC587363F9C477A6","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow OUT TCP SEARCHUI","ALLOW",OUT,Enabled,IPv4,TCP,"Trusted","8080",Any,"49125-65535","SEARCHUI","C:\WINDOWS\SYSTEMAPPS\MICROSOFT.WINDOWS.CORTANA_CW5N1H2TXYEWY\SEARCHUI.EXE","None","CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US","8257F859E8D06FF9D4B0C9FB821C9A53","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST","TEST Allow OUT TCP VPNAGENT","ALLOW",OUT,Enabled,IPv4,TCP,Any,"80",Any,"1024-65535","VPNAGENT","C:\PROGRAM FILES (X86)\CISCO\CISCO ANYCONNECT SECURE MOBILITY CLIENT\VPNAGENT.EXE","None","CN="Cisco Systems, Inc.", OU=Endpoint Security, O="Cisco Systems, Inc.", L=San Jose, S=California, C=US","5B709509F409E43D24B4A1E59FB80F72","Dynamically Created Via Adaptive Mode","2018-11-06","",
+"TEST Connection Aware Group (CAG) Allow Domain -STIG H37040","Allow All OUT","ALLOW",OUT,Disabled,,All,Any,Any,Any,Any,"","","","","","","2018-10-23","",
+"TEST Connection Aware Group (CAG) Allow Domain -STIG H37040","Allow All IN","ALLOW",IN,Disabled,,All,Any,Any,Any,Any,"","","","","","","2018-10-23","",
+"","Deny-by-Def","BLOCK",EITHER,Disabled,,All,Any,Any,Any,Any,"","","","","","To Enable Adaptive Mode, set both ALLOW ALL rules to DISABLED and the Deny By Default rule to DISABLED. Run the Property Translator task in Server tasks to view the Adaptive Rules in the Host IPS Catalog.","2018-11-06","",
+"","Version_20181208","BLOCK",EITHER,Disabled,,All,Any,Any,Any,Any,"","","","","","The TEST-ALL policy is the proposed Configuration Management (CM) file for all TEST baseline firewall policies (TEST-DC, EX, BU, SVR, HBSS, WKSTN, Hosted POR).    
+
+For Configuration Management (CM) purposes it's intended to be the single repository for all TEST enterprise fw rules.  The TEST-ALL will NOT be the production policy, rather it will be duplicated renamed to each of the fw polices (DC, EX, BU, SVR, HBSS, WKSTN) with the unnessesary sub-groups will be delelted (ie, the HBSS policy doesnt need Exchange rules/group or Domain Controller rules).  TEST-ALL provides a master file for all TEST Enterprise firewall changes.
+5/19/17 - Updated with info from the individual FW policies.","2018-07-13","",
